@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div {
+			width: 100px;
+			height: 100px;
+			background-color: #91e374;
+			border: 1px solid #f00;
+			padding: 10px;
+			float: left;
+		}
+
+		#container2 div {
+			background-color: salmon;
+		}
+	</style>
+</head>
+<body>
+	<div id='container'></div>
+	<div id='container2'></div>
+	<script type="text/javascript">
+		//uses var, which is treated as a global so all divs have the same #
+		var div, container = document.getElementById('container');
+		for (var i = 0; i <5; i++) {
+			div = document.createElement('div');
+			div.onclick = function() {
+				console.log('Box #' + i);
+			}
+			container.appendChild(div);
+		}
+	</script>
+	<hr>
+	<script type="text/javascript">
+		//uses let, which is not treated as a global so all divs have different #
+		var div, container2 = document.getElementById('container2');
+		for (let i = 0; i <5; i++) {
+			div = document.createElement('div');
+			div.onclick = function() {
+				console.log('Box #' + i);
+			}
+			container2.appendChild(div);
+		}
+	</script>
+</body>
+</html>
