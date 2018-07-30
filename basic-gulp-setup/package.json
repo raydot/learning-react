@@ -6,6 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raydot/learning-react"
+  },
   "keywords": [
     "Gulp",
     "React",
@@ -14,6 +18,7 @@
   "author": "Dave Kanter",
   "license": "GPL-3.0",
   "devDependencies": {
+    "babel-preset-env": "^1.7.0",
     "gulp-babel": "^7.0.1"
   }
 }
