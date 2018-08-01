@@ -15,6 +15,7 @@
     "React",
     "Javascript"
   ],
+  "presets": ["env"],
   "author": "Dave Kanter",
   "license": "GPL-3.0",
   "devDependencies": {
