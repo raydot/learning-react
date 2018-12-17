@@ -17,40 +17,44 @@
 	<script>
 		//YOUR REACT CODE HERE!!!
 		
-		//var myVar = React.createElement("h1", null, "Baked Salmon")
-		//ReactDOM.render(myVar, document.getElementById('react-container'))
+		// THIS RUNS OFF OF AN OLDER REACT STYLE
+		// createClass WAS ONCE THE ONLY WAY TO RENDER USING REACT
+		// const myVar = React.createClass({
+		// 	displayName: "IngredientsList",
+		// 	renderListItem(ingredient, i) {
+		// 		return React.createElement("li", { key: i }, ingredient )
+		// 	},
 
-		// var items = [
-		// 	"1 lb salmon",
-		// 	"1 cup pine nuts",
-		// 	"2 cups butter lettuce",
-		// 	"1 yellow squash",
-		// 	"1/2 cup olive oil",
-		// 	"3 cloves of garlic"
-		// ]
+		// 	render() {
+		// 		return React.createElement("ul", {className: "ingredients"}, 
+		// 			this.props.items.map(this.renderListItem)
+		// 		)
+		// 	}
+		// })
 
-		// var myVar = React.createElement(
-		// 	"ul",
-		// 	{ className: "ingredients" },
-		// 	items.map(ingredient =>
-		// 		React.createElement("li", null, ingredient)
-		// 	)
-		// )
-
-		const myVar = React.createClass({
-			displayName: "IngredientsList",
-			renderListItem(ingredient, i) {
-				return React.createElement("li", { key: i }, ingredient )
-			},
-
-			render() {
-				return React.createElement("ul", {className: "ingredients"}, 
-					this.props.items.map(this.renderListItem)
-				)
-			}
-		})
-
+		//RENDER A TITLE AS A SINGLE ELEMENT
+		var myVar = React.createElement("h1", null, "Baked Salmon")
 		ReactDOM.render(myVar, document.getElementById('react-container'))
+
+		//RENDER MULTIPLE ITEMS FROM A JS ARRAY
+		var items = [
+			"1 lb salmon",
+			"1 cup pine nuts",
+			"2 cups butter lettuce",
+			"1 yellow squash",
+			"1/2 cup olive oil",
+			"3 cloves of garlic"
+		]
+
+		var myVar2 = React.createElement(
+			"ul",
+			{ className: "ingredients" },
+			items.map(ingredient =>
+				React.createElement("li", null, ingredient)
+			)
+		)
+
+		ReactDOM.render(myVar2, document.getElementById('react-container'))
 
 
 	</script>
