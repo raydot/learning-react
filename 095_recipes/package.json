@@ -1,0 +1,29 @@
+{
+  "name": "095_recipes",
+  "version": "1.0.0",
+  "description": "Working from the code on page 95 of Learning React",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --progress --colors",
+    "start": "webpack-dev-server --progress --colors"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raydot/learning-react.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "Dave Kanter",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/raydot/learning-react/issues"
+  },
+  "homepage": "https://github.com/raydot/learning-react#readme",
+  "devDependencies": {
+    "webpack": "^4.28.0",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10"
+  }
+}
