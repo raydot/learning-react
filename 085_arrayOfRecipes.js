@@ -1,4 +1,7 @@
 //The data, an array of Recipe objects
+
+// This data is meant to be used with example 084_babel.html as a base...
+
 var data = [
 	{
 		"name" : "Baked Salmon",

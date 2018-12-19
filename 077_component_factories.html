@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML Document Setup with React</title>
+</head>
+<body>
+	<!-- "Pure" React -->
+
+	<!--Target container -->
+	<div id="react-container"></div>
+
+	<!-- React Library & ReactDOM -->
+	<script src="https://unpkg.com/react@15.4.2/dist/react.js"></script>
+	<script src="https://unpkg.com/react-dom@15.4.2/dist/react-dom.js"></script>
+	<script>
+		//YOUR REACT CODE HERE!!!
+		
+		/*  
+			Using Factories 
+
+			Instead of using React.createElement, we can use factories.
+			A factory is a special object that can be used to abstract away the details
+			of instantiating objects.  In React, we use factories to help us create React
+			element instances.
+
+			React has built in factories for all commonly supported HTML and SVG DOM elements,
+			and you can use the React.createFactory function to build your own factories around
+			specific components.
+		*/
+
+		// Instead of using createElement (see '070_component_createClass.html') we can create a 
+		// React element with a built in factory:
+
+		// React.DOM.h1(null, "Baked Salmon")
+		// In this case, the first argument is for properties and second for children.  
+
+		//	Here are factories using an unordered list:
+		// React.DOM.ul({"className": "ingredients"},
+		// 	React.DOM.li(null, "1 lb Salmon"),
+		// 	React.DOM.li(null, "1 cup Pine Nuts"),
+		// 	React.DOM.li(null, "2 cups Butter Lettuce"),
+		// 	React.DOM.li(null, "1 Yellow Squash"),
+		// 	React.DOM.li(null, "1/2 cup Olive Oil"),
+		// 	React.DOM.li(null, "3 cloves of Garlic")
+		// )
+
+		// THIS DOES NOT WORK IN REACT 16!
+
+		// NOW LETS USE MAP WITH FACTORIES (also doesn't work in 16)
+
+		var items = [
+			"1 lb salmon",
+			"1 cup pine nuts",
+			"2 cups butter lettuce",
+			"1 yellow squash",
+			"1/2 cup olive oil",
+			"3 cloves of garlic"
+		]
+
+		var list = React.DOM.ul(
+			{ className: "ingredients" },
+			items.map((ingredient, key) =>
+				React.DOM.li({key}, ingredient)
+			)
+		)
+
+		ReactDOM.render (
+			list,
+			document.getElementById('react-container')
+		)
+	</script>
+</body>
+</html>

@@ -19,6 +19,7 @@
 		
 		// THIS RUNS OFF OF AN OLDER REACT STYLE
 		// createClass WAS ONCE THE ONLY WAY TO RENDER USING REACT
+		// This technically an MVC "view"
 		// const myVar = React.createClass({
 		// 	displayName: "IngredientsList",
 		// 	renderListItem(ingredient, i) {
@@ -33,11 +34,43 @@
 		// })
 
 		//RENDER A TITLE AS A SINGLE ELEMENT
-		var myVar = React.createElement("h1", null, "Baked Salmon")
-		ReactDOM.render(myVar, document.getElementById('react-container'))
+		// var myVar = React.createElement("h1", null, "Baked Salmon")
+		// ReactDOM.render(myVar, document.getElementById('react-container'))
 
-		//RENDER MULTIPLE ITEMS FROM A JS ARRAY
-		var items = [
+		// //RENDER MULTIPLE ITEMS FROM A JS ARRAY
+		// var items = [
+		// 	"1 lb salmon",
+		// 	"1 cup pine nuts",
+		// 	"2 cups butter lettuce",
+		// 	"1 yellow squash",
+		// 	"1/2 cup olive oil",
+		// 	"3 cloves of garlic"
+		// ]
+
+		// var myVar2 = React.createElement(
+		// 	"ul",
+		// 	{ className: "ingredients" },
+		// 	items.map(ingredient =>
+		// 		React.createElement("li", null, ingredient)
+		// 	)
+		// )
+
+		// ReactDOM.render(myVar2, document.getElementById('react-container'))
+
+		// PASSING DATA USING COMPONENTS AS PROPERTIES:
+		const IngredientsList = React.createClass({
+			displayName: "IngredientsList",
+			render() {
+				return React.createElement("ul", {className:"ingredients"},
+					this.props.item.map((ingredient, i) =>
+						React.createElement("li", { key: i },
+							ingredient)
+						)
+					)
+			}
+		})
+
+		const items = [
 			"1 lb salmon",
 			"1 cup pine nuts",
 			"2 cups butter lettuce",
@@ -46,15 +79,10 @@
 			"3 cloves of garlic"
 		]
 
-		var myVar2 = React.createElement(
-			"ul",
-			{ className: "ingredients" },
-			items.map(ingredient =>
-				React.createElement("li", null, ingredient)
-			)
+		ReactDOM.render(
+			React.createElement(IngredientsList, {items}, null),
+			document.getElementById('react-container')
 		)
-
-		ReactDOM.render(myVar2, document.getElementById('react-container'))
 
 
 	</script>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML Document Setup with React</title>
+</head>
+<body>
+	<!-- "Pure" React -->
+
+	<!--Target container -->
+	<div id="react-container"></div>
+
+	<!-- React Library & ReactDOM -->
+	<script src="http://unpkg.com/react@16.0.0/umd/react.production.min.js"></script>
+	<script src="http://unpkg.com/react-dom@16.0.0/umd/react-dom.production.min.js"></script>
+	<script>
+		//YOUR REACT CODE HERE!!!
+		// Notice React libs now running 16 instead of 15
+
+		/* 
+			Using Factories with Components
+			If you would like to simplify your code by calling components as functions,
+			you need to explicitly create a factory.
+
+			This approach DOES work with React 16!
+		*/
+		
+		const { render } = ReactDOM; // ah, the factory!
+
+		const IngredientsList = ({ list }) =>
+			React.createElement('ul', null, list.map((ingredient, i) =>
+				React.createElement('li', {key: i}, ingredient)
+			)
+		)
+
+		const Ingredients = React.createFactory(IngredientsList)
+
+		const list = [
+			"1 lb salmon",
+			"1 cup pine nuts",
+			"2 cups butter lettuce",
+			"1 yellow squash",
+			"1/2 cup olive oil",
+			"3 cloves of garlic"
+		]
+
+		render(
+			Ingredients({list}), document.getElementById('react-container')
+		)
+
+		/*
+			If you are not working with JSX, you may find using factories prefereable to numerous React.createElement calls.  However, the easiest and most common way to define React elements is with JSX tags.  If you use JSX with React, chances are you will never use a factory.
+		*/
+		
+	</script>
+</body>
+</html>

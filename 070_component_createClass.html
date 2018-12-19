@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Pure React Samples</title>
+</head>
+<body>
+  
+  <!-- Target container -->
+  <div id="react-container"></div>
+  
+  <!-- React library & ReactDOM-->
+  <script src="https://unpkg.com/react@15.4.2/dist/react.js"></script>
+  <script src="https://unpkg.com/react-dom@15.4.2/dist/react-dom.js"></script>
+
+  <script>
+     // Pure React and JavaScript code (Example 4-12)
+     // There are three ways to create components in React. 
+     // 1.  createClass (depricated as of React 16)
+     // 2.  ES6 script
+     // 3.  Stateless functions
+
+     // Begin with the ingredients list as a React component 
+     // const IngredientsList = React.createClass({
+     // 	displayName: "IngredientsList",
+     // 	render() {
+     // 		return React.createElement("ul", {"className": "ingredients"},
+     // 			React.createElement("li", null, "1 lb Salmon"),
+     // 			React.createElement("li", null, "1 cup Pine Nuts"),
+     // 			React.createElement("li", null, "2 cups Butter"),
+     // 			React.createElement("li", null, "1 Yellow Squash"),
+     // 			React.createElement("li", null, "1/2 cup Olive Oil"),
+     // 			React.createElement("li", null, "3 cloves of Garlic")
+     // 		)
+     // 	}
+     // })
+
+     // const list = React.createElement(IngredientsList, null, null)
+
+     // ReactDOM.render(
+     // 	list,
+     // 	document.getElementById('react-container')
+     // )
+
+     // Interesting start, but holy repetition.  Let's pass the data to the list as an array:
+
+     // const IngredientsList = React.createClass({
+     // 	displayName: "IngredientsList",
+     // 	render() {
+     // 		return React.createElement("ul", 
+     // 			{className: "ingredients"},
+     // 			this.props.items.map((ingredient, i) => React.createElement("li", {key : i }, ingredient) // does not create a key.  Why?!
+     // 			) 
+     // 		)
+     // 	}
+     // })
+
+     // Now let's refactor to render a single list item and use that to build out the list
+     // This pretty much works like a "view" in MVC.  
+     const IngredientsList = React.createClass({
+     	displayName: "IngredientsList",
+     	renderListItem(ingredient, i) {
+     		return React.createElement("li", {key: i}, ingredient)
+     	},
+     	render() {
+     		return React.createElement("ul", {className: "ingredients"},
+     			this.props.items.map(this.renderListItem)
+     		)
+     	}
+     })
+
+	const items = [
+		"1 lb salmon",
+		"1 cup pine nuts",
+		"2 cups butter lettuce",
+		"1 yellow squash",
+		"1/2 cup olive oil",
+		"3 cloves of garlic"
+	]
+
+	ReactDOM.render(React.createElement(IngredientsList, {items}, null),
+		document.getElementById('react-container')
+	)
+
+  </script>
+
+</body>
+</html>

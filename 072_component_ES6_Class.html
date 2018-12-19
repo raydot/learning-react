@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML Document Setup with React</title>
+</head>
+<body>
+	<!-- "Pure" React -->
+
+	<!--Target container -->
+	<div id="react-container"></div>
+
+	<!-- React Library & ReactDOM -->
+	<script src="http://unpkg.com/react@16.0.0/umd/react.production.min.js"></script>
+	<script src="http://unpkg.com/react-dom@16.0.0/umd/react-dom.production.min.js"></script>
+
+	<script>
+		//YOUR REACT CODE HERE!!!
+		// Notice React libs now running 16 instead of 15
+
+		// Rendering the items as a pure ES6 class
+		// This is creating a custom component through inheritance by extending 
+		// the React.Component class with ES6 syntax.
+
+		class IngredientsList extends React.Component {
+			renderListItem(ingredient, i) {
+				return React.createElement("li", { key: i }, ingredient)
+			}
+
+			render() {
+				return React.createElement("ul", {className: "ingredients"},
+					this.props.items.map(this.renderListItem)
+				)
+			}
+		}
+		
+		const items = [
+			"1 lb salmon",
+			"1 cup pine nuts",
+			"2 cups butter lettuce",
+			"1 yellow squash",
+			"1/2 cup olive oil",
+			"3 cloves of garlic"
+		]
+
+		ReactDOM.render(React.createElement(IngredientsList, {items}, null),
+			document.getElementById('react-container')
+	)
+	</script>
+</body>
+</html>

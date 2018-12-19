@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML Document Setup with React</title>
+</head>
+<body>
+	<!-- "Pure" React -->
+
+	<!--Target container -->
+	<div id="react-container"></div>
+
+	<!-- React Library & ReactDOM -->
+	<script src="http://unpkg.com/react@16.0.0/umd/react.production.min.js"></script>
+	<script src="http://unpkg.com/react-dom@16.0.0/umd/react-dom.production.min.js"></script>
+
+	<script>
+		//YOUR REACT CODE HERE!!!
+		// Notice React libs now running 16 instead of 15
+
+		/*
+			Stateless functional components are functions, not objects; therefore, they do not have 
+			a "this" scope.  These should be used as much as possible!
+
+			A stateless functional component is a function that will take in properties and return
+			a DOM element.  They should be pure functions.  They should take in props and return a 
+			DOM element without causing side effects.
+		*/
+
+		// const IngredientsList = props =>
+		// 	React.createElement("ul", {className: "ingredients"},
+		// 		props.items.map((ingredient, i) =>
+		// 			React.createElement("li", { key: i }, ingredient)
+		// 		)
+		// 	)
+		
+		// And we can improved on this by destructuring the properties argument.  
+		// This means we can use ES6 to scope the list property directly to the function,
+		// reducing the repetitive dot syntax.
+
+		const IngredientsList = ({items}) =>
+			React.createElement("ul", {className: "ingredients"},
+				items.map((ingredient, i) =>
+					React.createElement("li", { key: i }, ingredient)
+				)
+			)
+
+		// Aside from being slightly cleaner syntax, Facebook has hinted that in the future,
+		// stateless functional components might be faster than createClass or ES6 class syntax.
+
+		const items = [
+			"1 lb salmon",
+			"1 cup pine nuts",
+			"2 cups butter lettuce",
+			"1 yellow squash",
+			"1/2 cup olive oil",
+			"3 cloves of garlic"
+		]
+
+		ReactDOM.render(React.createElement(IngredientsList, {items}, null),
+			document.getElementById('react-container')
+	)
+	</script>
+</body>
+</html>
